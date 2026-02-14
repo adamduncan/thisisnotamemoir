@@ -6,35 +6,62 @@
 
   <title>This Is Not a Memoir</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://use.typekit.net/uaw5euf.css">
+  <link rel="stylesheet" href="/css/styles.css">
 
   <meta name="theme-color" content="#1a1a1a">
-  <meta name="description" content="A single-page site. Replace with your description for SEO and social previews.">
+  <meta name="description" content="A film by Josh Earle">
 
   <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
   <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yoursite.netlify.app/">
+  <meta property="og:url" content="https://thisisnotamemoir.com">
   <meta property="og:title" content="This Is Not a Memoir">
-  <meta property="og:description" content="A single-page site. Replace with your description for SEO and social previews.">
-  <meta property="og:image" content="https://yoursite.netlify.app/og-image.png">
+  <meta property="og:description" content="A film by Josh Earle">
+  <meta property="og:image" content="https://thisisnotamemoir.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://yoursite.netlify.app/">
+  <meta name="twitter:url" content="https://thisisnotamemoir.com">
   <meta name="twitter:title" content="This Is Not a Memoir">
-  <meta name="twitter:description" content="A single-page site. Replace with your description for SEO and social previews.">
-  <meta name="twitter:image" content="https://yoursite.netlify.app/og-image.png">
+  <meta name="twitter:description" content="A film by Josh Earle">
+  <meta name="twitter:image" content="https://thisisnotamemoir.com/assets/og-image.png">
 
-  <script type="module" src="script.js"></script>
+  <script type="module" src="/js/script.js"></script>
 </head>
 <body>
+  <div class="parallax-stack" aria-hidden="true">
+    <div class="parallax-layer layer-back" style="--bg: url('/assets/images/bg.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-1" style="--bg: url('/assets/images/ben.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-2" style="--bg: url('/assets/images/bench1.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-3" style="--bg: url('/assets/images/bench2.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-4" style="--bg: url('/assets/images/papers1.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-5" style="--bg: url('/assets/images/papers2.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-6" style="--bg: url('/assets/images/papers3.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-front" style="--bg: url('/assets/images/pills.png');"><div class="parallax-layer__inner"></div></div>
+  </div>
   <main>
-    <h1>This Is Not a Memoir</h1>
+    <section class="section__inner">
+      <h1 class="text-center">This Is Not a Memoir</h1>
+    </section>
+    <section class="section__inner">
+      <div class="aspect-video">
+        <img src="/assets/og-image.png" alt="This Is Not a Memoir trailer">
+        <span class="play-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7L8 5z"/>
+          </svg>
+        </span>
+      </div>
+    </section>
+    <section class="section__inner">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>A film by Josh Earle</p>
+    </section>
   </main>
 </body>
 </html>
