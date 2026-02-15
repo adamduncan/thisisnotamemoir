@@ -20,7 +20,7 @@
   --content-max-width: 64rem;
   --page-padding-inline: var(--space-lg);
 
-  /* Colors – adjust to your theme */
+  /* Colors — adjust to your theme */
   --color-bg: #fff;
   --color-text: #1a1a1a;
   --color-text-muted: #555;
@@ -38,7 +38,7 @@
   }
 }
 
-/* Reset: only what’s needed */
+/* Reset: only what's needed */
 *, *::before, *::after {
   box-sizing: inherit;
 }
@@ -64,6 +64,17 @@ img {
   display: block;
 }
 
+/* Scroll detection sentinel */
+#scroll-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 /* Parallax stack: fixed viewport-filling layers, stacked back to front */
 .parallax-stack {
   position: fixed;
@@ -71,6 +82,8 @@ img {
   z-index: 0;
   pointer-events: none;
   contain: layout style paint;
+  transform-style: preserve-3d;
+  perspective: 1px;
 }
 
 .parallax-layer {
@@ -79,38 +92,90 @@ img {
   will-change: transform;
   contain: strict;
   animation-timeline: --page;
-  animation-range: 0% 50%; /* full effect by ~55% scroll so you don’t have to scroll as far */
+  animation-range: 0% 50%; /* full effect by ~55% scroll so you don't have to scroll as far */
   animation-timing-function: linear;
   animation-fill-mode: both;
   animation-duration: 1ms;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
+
 .parallax-layer__inner {
   position: absolute;
   inset: 0;
-  background-image: var(--bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: float 5s ease-in-out infinite;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
-.layer-back .parallax-layer__inner   { animation: none; }
-.layer-1 .parallax-layer__inner      { animation-delay: -0.8s; }
-.layer-2 .parallax-layer__inner      { animation-delay: -1.6s; }
-.layer-3 .parallax-layer__inner      { animation-delay: -2.4s; }
-.layer-4 .parallax-layer__inner      { animation-delay: -3.2s; }
-.layer-5 .parallax-layer__inner      { animation-delay: -1.2s; }
-.layer-6 .parallax-layer__inner      { animation-delay: -2s; }
-.layer-front .parallax-layer__inner  { animation-delay: -2.8s; }
+
+/* STRATEGIC FLOATING: Animate layers 2-6 and front (6 layers) */
+.layer-2 .parallax-layer__inner,
+.layer-3 .parallax-layer__inner,
+.layer-4 .parallax-layer__inner,
+.layer-5 .parallax-layer__inner,
+.layer-6 .parallax-layer__inner,
+.layer-front .parallax-layer__inner {
+  animation: float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Stagger + vary movement for more dynamic look */
+.layer-2 .parallax-layer__inner { 
+  animation-delay: -0.5s; 
+  animation-name: float-medium;
+}
+.layer-3 .parallax-layer__inner { 
+  animation-delay: -1.8s; 
+  animation-name: float-medium;
+}
+.layer-4 .parallax-layer__inner { 
+  animation-delay: -3.2s; 
+  animation-name: float-large;
+}
+.layer-5 .parallax-layer__inner { 
+  animation-delay: -4.5s; 
+  animation-name: float-large;
+}
+.layer-6 .parallax-layer__inner { 
+  animation-delay: -5.8s; 
+  animation-name: float-medium;
+}
+.layer-front .parallax-layer__inner { 
+  animation-delay: -7s; 
+  animation-name: float-large;
+}
+
+/* Varied float animations for more noticeable movement */
+@keyframes float-large {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -18px, 0); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -14px, 0); }
+}
+
+/* Legacy float keyframe for compatibility */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -16px, 0); }
+}
+
+/* Control floating based on scroll position */
+body:not(.at-top) .parallax-layer__inner {
+  animation-play-state: paused;
 }
 
 /* Back (slowest) → front (fastest) z-index and parallax travel */
 .layer-back   { z-index: 1; animation-name: parallax-none; }
 .layer-1      { z-index: 2; animation-name: parallax-subtle; }
 .layer-1 .parallax-layer__inner {
-  animation: none;
+  animation: none; /* No float on masked layer */
   mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
   mask-size: cover;
@@ -130,49 +195,49 @@ img {
     animation: none;
   }
   .parallax-layer__inner {
-    animation: none;
+    animation: none !important;
   }
 }
 
 @keyframes parallax-none {
-  from { transform: translateY(0); }
-  to   { transform: translateY(0); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
 }
 @keyframes parallax-subtle {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-100%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -100%, 0); }
 }
 @keyframes parallax-back {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-12%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -12%, 0); }
 }
 @keyframes parallax-1 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-110%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -110%, 0); }
 }
 @keyframes parallax-2 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-120%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -120%, 0); }
 }
 @keyframes parallax-3 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-130%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -130%, 0); }
 }
 @keyframes parallax-4 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-140%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -140%, 0); }
 }
 @keyframes parallax-5 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-150%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -150%, 0); }
 }
 @keyframes parallax-6 {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-160%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -160%, 0); }
 }
 @keyframes parallax-front {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-170%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -170%, 0); }
 }
 
 /* Main content */
@@ -287,4 +352,3 @@ a {
   color: white;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
-

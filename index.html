@@ -34,15 +34,34 @@
   <script type="module" src="/js/script.js"></script>
 </head>
 <body>
+  <!-- Sentinel element for scroll detection -->
+  <div id="scroll-sentinel" aria-hidden="true"></div>
+  
   <div class="parallax-stack" aria-hidden="true">
-    <div class="parallax-layer layer-back" style="--bg: url('/assets/images/bg.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-1" style="--bg: url('/assets/images/ben.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-2" style="--bg: url('/assets/images/bench1.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-3" style="--bg: url('/assets/images/bench2.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-4" style="--bg: url('/assets/images/papers1.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-5" style="--bg: url('/assets/images/papers2.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-6" style="--bg: url('/assets/images/papers3.png');"><div class="parallax-layer__inner"></div></div>
-    <div class="parallax-layer layer-front" style="--bg: url('/assets/images/pills.png');"><div class="parallax-layer__inner"></div></div>
+    <div class="parallax-layer layer-back">
+      <img src="/assets/images/bg.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-1">
+      <img src="/assets/images/ben.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-2">
+      <img src="/assets/images/bench1.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-3">
+      <img src="/assets/images/bench2.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-4">
+      <img src="/assets/images/papers1.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-5">
+      <img src="/assets/images/papers2.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-6">
+      <img src="/assets/images/papers3.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
+    <div class="parallax-layer layer-front">
+      <img src="/assets/images/pills.png" alt="" class="parallax-layer__inner" loading="eager">
+    </div>
   </div>
   <main>
     <section class="section__inner">
@@ -63,5 +82,12 @@
       <p>A film by Josh Earle</p>
     </section>
   </main>
+  <script>
+    const sentinel = document.getElementById('scroll-sentinel');
+    const observer = new IntersectionObserver(entries => {
+      document.body.classList.toggle('at-top', entries[0].isIntersecting);
+    });
+    observer.observe(sentinel);
+  </script>
 </body>
 </html>
