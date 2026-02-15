@@ -78,12 +78,22 @@ img {
 /* Parallax stack: fixed viewport-filling layers, stacked back to front */
 .parallax-stack {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh; /* Small viewport height - doesn't resize when browser chrome shows/hides */
+  height: 100vh; /* Fallback for older browsers */
   z-index: 0;
   pointer-events: none;
   contain: layout style paint;
   transform-style: preserve-3d;
   perspective: 1px;
+}
+
+@supports (height: 100svh) {
+  .parallax-stack {
+    height: 100svh; /* Small viewport height - locks to smallest size */
+  }
 }
 
 .parallax-layer {
