@@ -20,22 +20,10 @@
   --content-max-width: 64rem;
   --page-padding-inline: var(--space-lg);
 
-  /* Colors — adjust to your theme */
-  --color-bg: #fff;
-  --color-text: #1a1a1a;
-  --color-text-muted: #555;
-  --color-accent: #2563eb;
-  --color-border: #e5e5e5;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1a1a1a;
-    --color-text: #f5f5f5;
-    --color-text-muted: #a3a3a3;
-    --color-accent: #60a5fa;
-    --color-border: #333;
-  }
+  /* Colors */
+  --color-bg: #285259;
+  --color-text: #e3fbff;
+  --color-accent: #fff;
 }
 
 /* Reset: only what's needed */
