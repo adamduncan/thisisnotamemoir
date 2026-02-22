@@ -251,7 +251,7 @@ main {
 
 h1 {
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--line-height-tight);
   text-wrap: balance;
 }
@@ -259,7 +259,7 @@ h1 {
 p {
   font-family: var(--font-serif);
   font-size: var(--text-size-lg);
-  font-weight: 300;
+  font-weight: 400;
   margin-block: 0 1em;
   max-inline-size: 65ch;
   text-wrap: pretty;
