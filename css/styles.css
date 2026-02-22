@@ -22,8 +22,7 @@
 
   /* Colors */
   --color-bg: #285259;
-  --color-text: #e3fbff;
-  --color-accent: #fff;
+  --color-text: rgba(255, 255, 255, 0.8);
 }
 
 /* Reset: only what's needed */
@@ -263,10 +262,6 @@ p {
   margin-block: 0 1em;
   max-inline-size: 65ch;
   text-wrap: pretty;
-}
-
-a {
-  color: var(--color-accent);
 }
 
 /* Section inner: padded blocks with min height */
