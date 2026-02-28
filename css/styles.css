@@ -1,10 +1,10 @@
 :root {
   /* Typography */
   --font-sans: "europa", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "miller-text", "Georgia", "Times New Roman", Times, serif;
   --text-size-base: 1rem;
   --text-size-sm: 0.875rem;
   --text-size-lg: 1.125rem;
+  --text-size-xl: 1.5rem;
   --line-height: 1.6;
   --line-height-tight: 1.35;
 
@@ -249,38 +249,41 @@ main {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 400;
   line-height: var(--line-height-tight);
   text-wrap: balance;
 }
 
 p {
-  font-family: var(--font-serif);
   font-size: var(--text-size-lg);
-  font-weight: 400;
   margin-block: 0 1em;
   max-inline-size: 65ch;
   text-wrap: pretty;
+  width: 100%;
+}
+
+.text-xl {
+  font-size: var(--text-size-xl);
+  font-weight: 300;
+  text-wrap: balance;
 }
 
 /* Section inner: padded blocks with min height */
-.section__inner {
+.section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-block: var(--space-xl);
-  min-block-size: 50vh;
-  text-align: center;
   opacity: 1;
 }
-.section__inner:first-child {
+.section:first-child {
   min-block-size: 100vh;
   animation: load-fade-in 0.7s ease-out 500ms both;
 }
 @supports (animation-timeline: view()) {
-  .section__inner:not(:first-child) {
+  .section:not(:first-child) {
     animation: section-fade-in linear both;
     animation-timeline: view();
     animation-range: entry 25% entry 100%;
@@ -311,6 +314,9 @@ p {
 }
 .text-center {
   text-align: center;
+}
+.text-uppercase {
+  text-transform: uppercase;
 }
 .mx-auto {
   margin-inline: auto;

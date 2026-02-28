@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,10 +32,11 @@
   <meta name="twitter:description" content="A film by Josh Earle">
   <meta name="twitter:image" content="https://thisisnotamemoir.com/assets/og-image.png">
 </head>
+
 <body>
   <!-- Sentinel element for scroll detection -->
   <div id="scroll-sentinel" aria-hidden="true"></div>
-  
+
   <div class="parallax-stack" aria-hidden="true">
     <div class="parallax-layer layer-back">
       <img src="/assets/images/bg.png" alt="" class="parallax-layer__inner" loading="eager">
@@ -62,22 +64,41 @@
     </div>
   </div>
   <main>
-    <section class="section__inner">
+    <section class="section">
       <h1 class="text-center">This is not a Memoir</h1>
     </section>
-    <section class="section__inner">
+    <section class="section text-center">
+      <p class="text-xl">An abrupt cancer diagnosis turns a young
+        man&rsquo;s life upside down.</p>
+      <p class="text-xl">Follow him on a meditative and surreal
+        journey through treatment, his relationships,
+        fears, motivations and confronting the future.</p>
+    </section>
+    <section class="section">
       <div class="aspect-video">
-        <!-- <img src="/assets/og-image.png" alt="This is not a Memoir trailer">
-        <span class="play-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7L8 5z"/>
-          </svg>
-        </span> -->
-        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1165695848?h=3d7df6152b&badge=0&autopause=0&byline=0&title=0&vimeo_logo=0&color=77B7C1&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Trailer for the animated documentary: This is not a Memoir"></iframe></div>
+        <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+            src="https://player.vimeo.com/video/1165695848?h=3d7df6152b&badge=0&autopause=0&byline=0&title=0&vimeo_logo=0&color=77B7C1&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;"
+            title="Trailer for the animated documentary: This is not a Memoir"></iframe></div>
       </div>
     </section>
-    <section class="section__inner">
-      <p>A film by Josh Earle</p>
+    <section class="section">
+      <p>This Is Not A Memoir follows the story of Chris Ramsey, a young Australian man living in London. When he is
+        suddenly diagnosed with stage three bowel cancer, he is forced onto a challenging new path.</p>
+      <p>From first appointments to breaking the news to loved ones, Chris&rsquo; own voice guides the narrative. His
+        story is brought to life in a surreal animated world. Objects from his memory float by, strange lights glow in hospital
+        corridors and medical apparatus murmurs along the periphery.</p>
+      <p>His journey is a winding road of treatments, surgeries, chemotherapy and the life Chris strives to live in
+        spite of his diagnosis. An honest and unflinching reflection on balancing the moments of enthusiasm and hope
+        with the bitter lows of medical setbacks and diminishing options.</p>
+      <p>This Is Not A Memoir is both a personal cancer journey and a familiar one that resonates with anyone affected
+        by the disease.</p>
+    </section>
+    <section class="section text-center">
+      <p class="text-uppercase"><small>A film by</small> Josh Earle</p>
     </section>
   </main>
   <script src="https://player.vimeo.com/api/player.js"></script>
@@ -89,4 +110,5 @@
     observer.observe(sentinel);
   </script>
 </body>
+
 </html>
