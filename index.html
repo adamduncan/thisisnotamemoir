@@ -7,11 +7,20 @@
 
   <title>This is not a Memoir</title>
 
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://player.vimeo.com">
   <link rel="stylesheet" href="https://use.typekit.net/uaw5euf.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      background-color: #236a75;
+    }
+  </style>
 
-  <meta name="theme-color" content="#1a1a1a">
-  <meta name="description" content="A film by Josh Earle">
+  <meta name="theme-color" content="#236a75">
+  <meta name="description"
+    content="An abrupt cancer diagnosis turns a young man's life upside down — A film by Josh Earle">
 
   <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
   <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
@@ -20,7 +29,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thisisnotamemoir.com">
   <meta property="og:title" content="This is not a Memoir">
-  <meta property="og:description" content="A film by Josh Earle">
+  <meta property="og:description"
+    content="An abrupt cancer diagnosis turns a young man's life upside down — A film by Josh Earle">
   <meta property="og:image" content="https://thisisnotamemoir.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -29,7 +39,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://thisisnotamemoir.com">
   <meta name="twitter:title" content="This is not a Memoir">
-  <meta name="twitter:description" content="A film by Josh Earle">
+  <meta name="twitter:description"
+    content="An abrupt cancer diagnosis turns a young man's life upside down — A film by Josh Earle">
   <meta name="twitter:image" content="https://thisisnotamemoir.com/assets/og-image.png">
 </head>
 
@@ -37,13 +48,13 @@
   <!-- Sentinel element for scroll detection -->
   <div id="scroll-sentinel" aria-hidden="true"></div>
 
-  <img class="layer-back" src="/assets/images/bg.png" alt="" loading="eager">
+  <img class="layer-back" src="/assets/images/bg.png" alt="" loading="eager" fetchpriority="high">
   <div class="parallax-stack" aria-hidden="true">
     <div class="parallax-layer layer-1">
       <img src="/assets/images/ben.png" alt="" class="parallax-layer__inner" loading="eager">
     </div>
     <div class="parallax-layer layer-2">
-      <img src="/assets/images/bench1.png" alt="" class="parallax-layer__inner" loading="eager">
+      <img src="/assets/images/bench1.png" alt="" class="parallax-layer__inner" loading="eager" fetchpriority="high">
     </div>
     <div class="parallax-layer layer-3">
       <img src="/assets/images/bench2.png" alt="" class="parallax-layer__inner" loading="eager">
@@ -74,13 +85,12 @@
     </section>
     <section class="section">
       <div class="aspect-video">
-        <div style="padding:56.25% 0 0 0;position:relative;"><iframe
-            src="https://player.vimeo.com/video/1165695848?h=3d7df6152b&badge=0&autopause=0&byline=0&title=0&vimeo_logo=0&color=77B7C1&player_id=0&app_id=58479"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;"
-            title="Trailer for the animated documentary: This is not a Memoir"></iframe></div>
+        <iframe
+          src="https://player.vimeo.com/video/1165695848?h=3d7df6152b&badge=0&autopause=0&byline=0&title=0&vimeo_logo=0&color=77B7C1&player_id=0&app_id=58479"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          title="Trailer for the animated documentary: This is not a Memoir"></iframe>
       </div>
     </section>
     <section class="section side-by-side pt-4xl">
@@ -120,29 +130,28 @@
             <p>This is his first fully animated short film.</p>
           </div>
         </div>
-        <div>
-          <div class="side-by-side">
-            <h2 class="text-center text-uppercase">Composer&rsquo;s bio</h2>
-            <div>
-              <p>Benjamin Kelly-Brown is a composer, songwriter and producer whose work spans film, theatre, live
-                performance
-                and commercial media. He began composing in his early teens and has since developed a diverse and
-                internationally informed musical career.</p>
-              <p>In his early twenties, Benjamin spent five years travelling internationally as a professional musician,
-                collaborating with a wide range of artists and appearing on Chinese television. Alongside his
-                performance
-                career, he ran a recording studio for several years, supporting emerging and underrepresented artists
-                through
-                outreach projects and mentoring initiatives. His compositional portfolio includes original scores for
-                theatre
-                productions, music for promotional campaigns, and now film. He currently works with young people to
-                nurture
-                their creative development, combining his industry experience with a strong commitment to empowering the
-                next
-                generation of artists.</p>
-            </div>
+        <div class="side-by-side">
+          <h2 class="text-center text-uppercase">Composer&rsquo;s bio</h2>
+          <div>
+            <p>Benjamin Kelly-Brown is a composer, songwriter and producer whose work spans film, theatre, live
+              performance
+              and commercial media. He began composing in his early teens and has since developed a diverse and
+              internationally informed musical career.</p>
+            <p>In his early twenties, Benjamin spent five years travelling internationally as a professional musician,
+              collaborating with a wide range of artists and appearing on Chinese television. Alongside his
+              performance
+              career, he ran a recording studio for several years, supporting emerging and underrepresented artists
+              through
+              outreach projects and mentoring initiatives. His compositional portfolio includes original scores for
+              theatre
+              productions, music for promotional campaigns, and now film. He currently works with young people to
+              nurture
+              their creative development, combining his industry experience with a strong commitment to empowering the
+              next
+              generation of artists.</p>
           </div>
         </div>
+      </div>
     </section>
     <section class="section text-center pt-4xl">
       <div class="inline gap-sm md:gap-lg">
@@ -153,7 +162,6 @@
       </div>
     </section>
   </main>
-  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     const sentinel = document.getElementById('scroll-sentinel');
     const observer = new IntersectionObserver(entries => {

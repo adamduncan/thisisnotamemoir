@@ -22,7 +22,7 @@
   --page-padding-inline: var(--space-lg);
 
   /* Colors */
-  --color-bg: #285259;
+  --color-bg: #236a75;
   --color-text: rgba(255, 255, 255, 0.8);
 }
 
@@ -74,6 +74,7 @@ img {
 
 /* Parallax stack: fixed viewport-filling layers, stacked back to front */
 .parallax-stack {
+  animation: load-zoom-out 1.2s ease-out both;
   position: absolute;
   top: 0;
   left: 0;
@@ -89,6 +90,16 @@ img {
 @supports (animation-timeline: view()) {
   .parallax-stack {
     position: fixed;
+  }
+}
+
+@keyframes load-zoom-out {
+  from { transform: scale(1.1); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .parallax-stack {
+    animation: none;
   }
 }
 
@@ -185,12 +196,6 @@ img {
   50%      { transform: translate3d(0, -14px, 0); }
 }
 
-/* Legacy float keyframe for compatibility */
-@keyframes float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50%      { transform: translate3d(0, -16px, 0); }
-}
-
 /* Control floating based on scroll position */
 body:not(.at-top) .parallax-layer__inner {
   animation-play-state: paused;
@@ -222,18 +227,9 @@ body:not(.at-top) .parallax-layer__inner {
     animation: none !important;
   }
 }
-
-@keyframes parallax-none {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(0, 0, 0); }
-}
 @keyframes parallax-subtle {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(0, -100%, 0); }
-}
-@keyframes parallax-back {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(0, -12%, 0); }
 }
 @keyframes parallax-1 {
   from { transform: translate3d(0, 0, 0); }
@@ -315,7 +311,7 @@ small {
 }
 .section:first-child {
   min-block-size: 100vh;
-  animation: load-fade-in 0.7s ease-out 500ms both;
+  animation: load-fade-in 0.7s ease-out 750ms both;
 }
 @supports (animation-timeline: view()) {
   .section:not(:first-child) {
@@ -406,27 +402,7 @@ small {
   max-width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--color-bg);
 }
-.aspect-video img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.play-icon {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-.play-icon svg {
-  width: 4rem;
-  height: 4rem;
-  color: white;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+.aspect-video iframe {
+  border: none;
 }
