@@ -2,11 +2,10 @@
   /* Typography */
   --font-sans: "europa", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --text-size-base: 1rem;
-  --text-size-sm: 0.875rem;
-  --text-size-lg: 1.125rem;
-  --text-size-xl: 1.5rem;
-  --line-height: 1.6;
-  --line-height-tight: 1.35;
+  --text-size-sm: 0.75rem;
+  --text-size-lg: 1rem;
+  --text-size-xl: 1.25rem;
+  --line-height: 1.4;
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -15,6 +14,8 @@
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
 
   /* Layout */
   --content-max-width: 64rem;
@@ -24,6 +25,15 @@
   --color-bg: #285259;
   --color-text: rgba(255, 255, 255, 0.8);
 }
+
+@media (min-width: 37.5rem) {
+  :root {
+    --text-size-sm: 0.875rem;
+    --text-size-lg: 1.125rem;
+    --text-size-xl: 1.5rem;
+  }
+}
+
 
 /* Reset: only what's needed */
 *, *::before, *::after {
@@ -64,7 +74,7 @@ img {
 
 /* Parallax stack: fixed viewport-filling layers, stacked back to front */
 .parallax-stack {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -76,28 +86,44 @@ img {
   perspective: 1px;
   overflow: hidden;
 }
+@supports (animation-timeline: view()) {
+  .parallax-stack {
+    position: fixed;
+  }
+}
 
 .parallax-layer {
   position: absolute;
   inset: 0;
   will-change: transform;
-  contain: strict;
-  animation-timeline: --page;
-  animation-range: 0% 50%; /* full effect by ~55% scroll so you don't have to scroll as far */
-  animation-timing-function: linear;
-  animation-fill-mode: both;
-  animation-duration: 1ms;
-  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
+}
+@supports (animation-timeline: view()) {
+  .parallax-layer {
+    contain: strict;
+    animation-timeline: --page;
+    animation-range: 0% 50%; /* full effect by ~55% scroll so you don't have to scroll as far */
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-duration: 1ms;
+    backface-visibility: hidden;
+  }
 }
 
 /* Only oversize the background layer to prevent gap on mobile */
 .layer-back {
+  display: block;
   top: -5%;
-  left: -5%;
-  width: 110%;
+  left: 0;
+  width: 100%;
   height: 110%;
+  position: fixed;
+  object-fit: cover;
+  object-position: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 0;
 }
 
 .parallax-layer__inner {
@@ -171,7 +197,6 @@ body:not(.at-top) .parallax-layer__inner {
 }
 
 /* Back (slowest) → front (fastest) z-index and parallax travel */
-.layer-back   { z-index: 1; animation-name: parallax-none; }
 .layer-1      { z-index: 2; animation-name: parallax-subtle; }
 .layer-1 .parallax-layer__inner {
   animation: none; /* No float on masked layer */
@@ -251,16 +276,26 @@ main {
 h1 {
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 400;
-  line-height: var(--line-height-tight);
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--text-size-lg);
+  font-weight: 400;
   text-wrap: balance;
 }
 
 p {
   font-size: var(--text-size-lg);
+  font-weight: 300;
   margin-block: 0 1em;
-  max-inline-size: 65ch;
+  max-inline-size: 60ch;
   text-wrap: pretty;
   width: 100%;
+}
+
+small {
+  font-size: 70%;
 }
 
 .text-xl {
@@ -302,12 +337,41 @@ p {
 .stack {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+.inline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@media (min-width: 60rem) {
+  .inline {
+    display: inline-flex;
+    flex-direction: row;
+  }
+}
+.gap-sm {
+  gap: var(--space-sm);
+}
+@media (min-width: 60rem) {
+  .md\:gap-lg {
+    gap: var(--space-lg);
+  }
 }
 .gap-xl {
   gap: var(--space-xl);
 }
 .gap-2xl {
   gap: var(--space-2xl);
+}
+.my-0 {
+  margin-block: 0;
+}
+.pt-md {
+  padding-top: var(--space-md);
+}
+.pt-4xl {
+  padding-top: var(--space-4xl);
 }
 .py-2xl {
   padding-block: var(--space-2xl);
@@ -320,6 +384,19 @@ p {
 }
 .mx-auto {
   margin-inline: auto;
+}
+
+@media (min-width: 60rem) {
+  .side-by-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 /* 16:9 video embed container (image placeholder until video) */
